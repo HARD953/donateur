@@ -18,6 +18,8 @@ from rest_framework.filters import SearchFilter
 from rest_framework import status
 from django.http import Http404
 
+from rest_framework_simplejwt.tokens import RefreshToken
+
 # Create your views here.
 class CreateDonateur(APIView):
     def post(self,request):
@@ -92,15 +94,14 @@ class EffectuerDonsArg(APIView):
         else:
             data['donateur']='issa'
             serializer = EffectuerArgSerializer(data=data)
-
         error_message=None
         if serializer.is_valid():
             error_message=self.donEffectuer(data)
             if not error_message:
                 serializer.save()
                 return Response({'message':message,'data':serializer.data,'status':200})
-            return Response({'message':error_message,'status':400})
-        return Response({'message':serializer.errors ,'status':400})
+            return Response({'message':error_message,'status':status.HTTP_400_BAD_REQUEST})
+        return Response({'message':serializer.errors ,'status':status.HTTP_400_BAD_REQUEST})
 
     def donEffectuer(self,donateur):
         error_message = None
@@ -215,3 +216,17 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+
+class BlacklistTokenUpdateView(APIView):
+    permission_classes = [AllowAny]
+    authentication_classes = ()
+
+    def post(self, request):
+        try:
+            refresh_token = request.data["refresh_token"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)

@@ -21,5 +21,7 @@ urlpatterns=format_suffix_patterns([
     path('natured/<int:pk>/', Natured.as_view(),name='detail-donnd'),
     #connexion
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+    path('token/refresh/', BlacklistTokenUpdateView.as_view(), name='token_refresh'),
+    path('logout/blacklist/', BlacklistTokenUpdateView.as_view(),
+         name='blacklist')
 ])

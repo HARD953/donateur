@@ -79,7 +79,7 @@ class CreateDonateurOr(APIView):
 class EffectuerDonsArg(APIView):
     def get(self,request):
         if self.request.user.is_authenticated:
-            dons=EffectuerDonArge.objects.filter(donateur=self.request.user)
+            dons=EffectuerDonArge.objects.filter(donateur=self.request.user.user_name)
             serializer=EffectuerArgSerializer(dons, many=True)
             return Response({'data':serializer.data,'status':status.HTTP_200_OK})
         else:
@@ -120,7 +120,7 @@ class EffectuerDonsArg(APIView):
 class EffectuerDonsObj(APIView):
     def get(self,request):
         if self.request.user.is_authenticated:
-            dons=EffectuerDonNature.objects.filter(donateur=self.request.user)
+            dons=EffectuerDonNature.objects.filter(donateur=self.request.user.user_name)
             serializer=EffectuerNatSerializer(dons, many=True)
             return Response({'data':serializer.data,'status':status.HTTP_200_OK})
         else:
@@ -174,7 +174,7 @@ class Argend(generics.RetrieveUpdateDestroyAPIView):
     filterset_fields=["donateur","typeDons","categorieV","cibleV","provider"]
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return EffectuerDonArge.objects.filter(donateur=self.request.user)
+            return EffectuerDonArge.objects.filter(donateur=self.request.user.user_name)
 
 class Natured(generics.RetrieveUpdateDestroyAPIView):
     model=EffectuerDonNature
@@ -185,12 +185,13 @@ class Natured(generics.RetrieveUpdateDestroyAPIView):
     filterset_fields=["donateur","typeDons","categorieV","cibleV","categorieObjet","typeObjet"]
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return EffectuerDonNature.objects.filter(donateur=self.request.user)
+            return EffectuerDonNature.objects.filter(donateur=self.request.user.user_name)
 
 class Argen(APIView):
     def get(self,request):
         if self.request.user.is_authenticated:
-            dons=EffectuerDonArge.objects.filter(donateur=self.request.user)
+            print(self.request.user)
+            dons=EffectuerDonArge.objects.filter(donateur=self.request.user.user_name)
             serializer=EffectuerArgSerializer(dons, many=True)
             return Response({'data':serializer.data,'status':status.HTTP_200_OK})
         else:
@@ -199,7 +200,7 @@ class Argen(APIView):
 class Nature(APIView):
     def get(self,request):
         if self.request.user.is_authenticated:
-            dons=EffectuerDonNature.objects.filter(donateur=self.request.user)
+            dons=EffectuerDonNature.objects.filter(donateur=self.request.user.user_name)
             serializer=EffectuerNatSerializer(dons, many=True)
             return Response({'data':serializer.data,'status':status.HTTP_200_OK})
         else:
@@ -211,7 +212,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
         token['email'] = user.email
-    
+        
         return token
 
 class MyTokenObtainPairView(TokenObtainPairView):

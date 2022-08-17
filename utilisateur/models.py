@@ -54,7 +54,7 @@ class DonateurUser(AbstractBaseUser,PermissionsMixin):
     REQUIRED_FIELDS=['user_name','password']
     
     def __str__(self):
-        return self.user_name
+        return self.email
 
 class EffectuerDonArge(models.Model):
     #Espece

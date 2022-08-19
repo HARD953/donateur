@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-##d@ssy&3r81^f8cvonb31b4!0ar(&l6h@4jfhc*-@pbapxhxb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','https://dashlanfia.herokuapp.com/','https://lanfiadon.herokuapp.com/','localhost', '127.0.0.1',"https://127.0.0.1:3000","https://apidons.herokuapp.com",'https://localhost:3000',"http://127.0.0.1:3000",'http://localhost:3000']
+ALLOWED_HOSTS = ['0.0.0.0','https://dashblanfia.herokuapp.com/','https://dashlanfia.herokuapp.com/','https://lanfiadon.herokuapp.com/','localhost', '127.0.0.1',"https://127.0.0.1:3000","https://apidons.herokuapp.com",'https://localhost:3000',"http://127.0.0.1:3000",'http://localhost:3000']
 
 # Application definition
 
@@ -178,7 +178,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://127.0.0.1:3000",
     "https://127.0.0.1:8000",
     "https://lanfiadon.herokuapp.com/",
-    "https://dashlanfia.herokuapp.com/"
+    "https://dashlanfia.herokuapp.com/",
+    "https://dashblanfia.herokuapp.com/"
 ]
 
 # CORS_ALLOWED_ORIGINS = [

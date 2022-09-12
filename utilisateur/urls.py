@@ -17,6 +17,10 @@ urlpatterns=format_suffix_patterns([
     #Afficher ses dons
     path('argent/', Argen.as_view(),name='detail-donard'),
     path('natures/', Nature.as_view(),name='detail-donnd'),
+
+    path('cibleargent/', CibleArgent.as_view(),name='cible-donard'),
+    path('ciblenatures/', CibleNature.as_view(),name='cible-donnd'),
+
     path('argend/<int:pk>/', Argend.as_view(),name='detail-donard'),
     path('natured/<int:pk>/', Natured.as_view(),name='detail-donnd'),
     #connexion

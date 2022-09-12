@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser,PermissionsMixin, AbstractBa
 from affecte.models import*
 from django.utils import timezone
 from django.conf import settings
+
 # Create your models here.
 class CustumerAccountManager(BaseUserManager):
     def create_user(self, email, user_name,first_name,password, **other_fields):
@@ -32,7 +33,9 @@ class DonateurUser(AbstractBaseUser,PermissionsMixin):
     email=models.EmailField(max_length=255,unique=True)
     numero=models.CharField(max_length=30,unique=True)
     organisations=models.CharField(max_length=30,default="null")
+    last_login = models.DateTimeField(('last_login'), default=timezone.now())
     objects=CustumerAccountManager()
+
     # adresse=models.CharField(max_length=300, blank=True, null=True)
     # about_me=models.TextField(max_length=500, blank=True, null=True)
     # create=models.DateTimeField(auto_now_add=True)

@@ -2,10 +2,11 @@ from rest_framework import serializers
 from .models import *
 from django.contrib.auth.models import User
 
+
 class DonateurMSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DonateurUser
-        fields=['user_name','last_name','email','numero','password']
+        fields=['user_name','last_name','email','numero','password','last_login']
         extra_kwargs ={
             'password':{'write_only':True}
         }
@@ -21,7 +22,7 @@ class DonateurMSerializer(serializers.HyperlinkedModelSerializer):
 class DonateurOrSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DonateurUser
-        fields=['user_name','last_name','email','numero','organisations','password']
+        fields=['user_name','last_name','email','numero','organisations','password','last_login']
         extra_kwargs ={
             'password':{'write_only':True}
         }
@@ -37,12 +38,12 @@ class DonateurOrSerializer(serializers.HyperlinkedModelSerializer):
 class EffectuerArgSerializer(serializers.ModelSerializer):
     class Meta:
         model = EffectuerDonArge
-        fields = ["id","donateur","typeDons","categorieV","cibleV","montant","provider","affecter"]
+        fields = ["id","donateur","typeDons","categorieV","cibleV","montant","provider","affecter","create"]
 
 class EffectuerNatSerializer(serializers.ModelSerializer):
     class Meta:
         model = EffectuerDonNature
-        fields = ["id","donateur","typeDons","categorieV","cibleV","categorieObjet","typeObjet","lieu_reception","Etat","photo","affecter"]
+        fields = ["id","donateur","typeDons","categorieV","cibleV","categorieObjet","typeObjet","lieu_reception","Etat","photo","affecter","create"]
 
 
 # class ESerializer(serializers.ModelSerializer):

@@ -30,6 +30,7 @@ class CustumerAccountManager(BaseUserManager):
 class DonateurUser(AbstractBaseUser,PermissionsMixin):
     user_name=models.CharField(max_length=30)
     last_name=models.CharField(max_length=30)
+    first_name=models.CharField(max_length=30)
     email=models.EmailField(max_length=255,unique=True)
     numero=models.CharField(max_length=30,unique=True)
     organisations=models.CharField(max_length=30,default="null")
@@ -57,7 +58,7 @@ class DonateurUser(AbstractBaseUser,PermissionsMixin):
     "password":"herve01"
     }
     USERNAME_FIELD='email'
-    REQUIRED_FIELDS=['user_name','password']
+    REQUIRED_FIELDS=['user_name','first_name']
     
     def __str__(self):
         return self.email

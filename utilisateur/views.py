@@ -251,3 +251,14 @@ class BlacklistTokenUpdateView(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class DetailConecter(APIView):
+    permission_classes=[AllowAny]
+    def get(self,request):
+        if self.request.user.is_authenticated:
+            dons=DonateurUser.objects.filter(user_name=self.request.user.user_name)
+            serializer=DonateurOrSerializer(dons, many=True)
+            return Response({'data':serializer.data,'status':status.HTTP_200_OK})
+        else:
+            return Response({'status':status.HTTP_400_BAD_REQUEST})

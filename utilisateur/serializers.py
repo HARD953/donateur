@@ -38,12 +38,12 @@ class DonateurOrSerializer(serializers.HyperlinkedModelSerializer):
 class EffectuerArgSerializer(serializers.ModelSerializer):
     class Meta:
         model = EffectuerDonArge
-        fields = ["id","donateur","typeDons","categorieV","cibleV","montant","provider","affecter","create"]
+        fields = ["id","donateur","typeDons","categorieV","cibleV","montant","provider","affecter","create","typePersonne"]
 
 class EffectuerNatSerializer(serializers.ModelSerializer):
     class Meta:
         model = EffectuerDonNature
-        fields = ["id","donateur","typeDons","categorieV","cibleV","categorieObjet","typeObjet","lieu_reception","Etat","photo","affecter","create"]
+        fields = ["id","donateur","typeDons","categorieV","cibleV","categorieObjet","typeObjet","lieu_reception","Etat","photo","affecter","create","typePersonne"]
 
 
 # class ESerializer(serializers.ModelSerializer):

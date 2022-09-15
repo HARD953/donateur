@@ -68,6 +68,7 @@ class EffectuerDonArge(models.Model):
     create=models.DateTimeField(auto_now_add=True)
     montant=models.CharField(max_length=100,default='null')
     provider=models.CharField(max_length=100,default='null')
+    typePersonne=models.CharField(max_length=100,default='null')
     affecter = models.BooleanField (default=False)
     # x=["Etat","photo","lieu_reception","donateur","typeD","categorieV","cibleV","montant","provider","categorieObjet","typeObjet"]
     def __str__(self):
@@ -86,6 +87,7 @@ class EffectuerDonNature(models.Model):
     lieu_reception=models.CharField(max_length=100,default='null')
     photo=models.ImageField(upload_to=nameFile,blank=True)
     Etat=models.CharField(max_length=100,default='null')
+    typePersonne=models.CharField(max_length=100,default='null')
     affecter = models.BooleanField (default=False)
     create=models.DateTimeField(auto_now_add=True)
 

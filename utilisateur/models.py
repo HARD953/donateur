@@ -33,6 +33,9 @@ class DonateurUser(AbstractBaseUser,PermissionsMixin):
     email=models.EmailField(max_length=255,unique=True)
     numero=models.CharField(max_length=30,unique=True)
     organisations=models.CharField(max_length=30,default="null")
+    email1=models.EmailField(max_length=255)
+    adresse=models.CharField(max_length=30,default="null")
+    numero1=models.CharField(max_length=30,unique=True)
     last_login = models.DateTimeField(('last_login'), default=timezone.now())
     objects=CustumerAccountManager()
 

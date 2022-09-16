@@ -88,6 +88,7 @@ WSGI_APPLICATION = 'Agent.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -102,10 +103,10 @@ WSGI_APPLICATION = 'Agent.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd10inak4q63m35', 
-        'USER': 'xcvlbiawulbmdd', 
-        'PASSWORD': '688426d7ba33e25a328f6475db5f914189583e0b79553504e2aa63161727a038',
-        'HOST': 'ec2-50-19-255-190.compute-1.amazonaws.com', 
+        'NAME': 'd2vhac5nh6aka7', 
+        'USER': 'bahgltudddazdi', 
+        'PASSWORD': 'd430cf5fd2932df49a2567cabad56a77fddb286e6e22c01a4c1794e12c0bca65',
+        'HOST': 'ec2-34-234-240-121.compute-1.amazonaws.com', 
         'PORT': '5432',
     }
 }

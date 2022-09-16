@@ -30,7 +30,7 @@ class CustumerAccountManager(BaseUserManager):
 class DonateurUser(AbstractBaseUser,PermissionsMixin):
     user_name=models.CharField(max_length=30)
     last_name=models.CharField(max_length=30)
-    first_name=models.CharField(max_length=30)
+    first_name=models.CharField(max_length=30,default="ras")
     email=models.EmailField(max_length=255,unique=True)
     numero=models.CharField(max_length=30,unique=True)
     organisations=models.CharField(max_length=30,default="null")
@@ -39,7 +39,6 @@ class DonateurUser(AbstractBaseUser,PermissionsMixin):
     numero1=models.CharField(max_length=30,unique=True)
     last_login = models.DateTimeField(('last_login'), default=timezone.now())
     objects=CustumerAccountManager()
-
     # adresse=models.CharField(max_length=300, blank=True, null=True)
     # about_me=models.TextField(max_length=500, blank=True, null=True)
     # create=models.DateTimeField(auto_now_add=True)
